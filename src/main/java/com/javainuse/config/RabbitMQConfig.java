@@ -1,5 +1,6 @@
 package com.javainuse.config;
 
+
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -16,17 +17,18 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-	@Value("${javainuse.rabbitmq.queue}")
+	@Value("${product.rabbitmq.queue}")
 	String queueName;
 
-	@Value("${javainuse.rabbitmq.exchange}")
+	@Value("${product.rabbitmq.exchange}")
 	String exchange;
 
-	@Value("${javainuse.rabbitmq.routingkey}")
+	@Value("${product.rabbitmq.routingkey}")
 	private String routingkey;
-
+	
 	@Bean
 	Queue queue() {
+
 		return new Queue(queueName, false);
 	}
 
