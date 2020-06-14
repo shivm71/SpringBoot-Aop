@@ -1,6 +1,8 @@
 package com.consumer.Model;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,7 +13,16 @@ import java.util.ArrayList;
 public class Notify {
     @Id
     private String productid;
-
+    private ArrayList<String> useridList= new ArrayList<>();
+    public Notify(){
+//        this.useridList= new ArrayList<>();
+    }
+    public Notify(NotifyQueueRequest notifyQueueRequest){
+//        this.id = notifyQueueRequest.getId();
+        this.productid=notifyQueueRequest.getProductid();
+//        this.useridList= new ArrayList<>();
+        this.useridList.add(notifyQueueRequest.getUserid());
+    }
     public String getProductid() {
         return productid;
     }
@@ -23,18 +34,12 @@ public class Notify {
     public ArrayList<String> getUseridList() {
         return useridList;
     }
-
     public void setUseridList(ArrayList<String> useridList) {
         this.useridList = useridList;
     }
-
-    private ArrayList<String> useridList;
-    public Notify(){}
-    public Notify(NotifyQueueRequest notifyQueueRequest){
-        this.productid=notifyQueueRequest.getProductid();
-        this.useridList.add(notifyQueueRequest.getUserid());
-    }
     public void setuseridList(String userid){
-        this.useridList.add(userid);
+
+        if(!this.useridList.contains(userid))
+                this.useridList.add(userid);
     }
 }

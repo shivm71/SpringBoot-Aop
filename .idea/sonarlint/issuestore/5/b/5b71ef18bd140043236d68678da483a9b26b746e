@@ -1,0 +1,10 @@
+
+†
+java:S1319*"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ë‚íî
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(–ÃÂ
+O
+java:S3655("9Call "notifyList.isPresent()" before accessing the value.(´ÈûÍ
+O
+java:S3655$"9Call "notifyList.isPresent()" before accessing the value.(´ÈûÍ
+o
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÆğÜÒ

@@ -4,15 +4,16 @@ import com.consumer.Model.Notify;
 import com.consumer.Model.NotifyQueueRequest;
 import com.consumer.Model.UpdateQueueRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-@Repository
+@Component
 public class NotificationDaoImpl {
     @Autowired
-     NotificationDao notificationDao;
+    private NotificationDao notificationDao;
     public Notify insert(NotifyQueueRequest notifyQueueRequest) {
         if(exist(notifyQueueRequest)){
             Notify notify=findById(notifyQueueRequest);

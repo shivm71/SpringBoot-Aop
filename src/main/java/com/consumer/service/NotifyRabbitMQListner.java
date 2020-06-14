@@ -12,6 +12,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 
 
 @Service
@@ -23,7 +24,7 @@ public class NotifyRabbitMQListner {
     NotificationService notificationService;
 
     @RabbitListener(queues = "notify.queue")
-    public void notify(Message message) {
+    public void notify(Message message)throws IOException {
         String msg = new String(message.getBody());
         System.out.println(msg);
         try {
@@ -32,12 +33,12 @@ public class NotifyRabbitMQListner {
             System.out.println("notify Message From RabbitMQ: " + notify);
 
         } catch (JsonProcessingException e) {
-            System.out.println(e);
+            System.out.println("errorrrorroo"+e);
         }
 
     }
     @RabbitListener(queues = "update.queue")
-    public void onUpdate(Message message) {
+    public void onUpdate(Message message)throws IOException {
         String msg = new String(message.getBody());
         System.out.println(msg);
         try {
